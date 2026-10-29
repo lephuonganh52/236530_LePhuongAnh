@@ -1,3 +1,4 @@
+﻿global.crypto = require('crypto');
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -7,12 +8,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Kết nối MongoDB Atlas
+// Káº¿t ná»‘i MongoDB Atlas
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('Da ket noi MongoDB Atlas thanh cong!'))
   .catch(err => console.error('Loi ket noi MongoDB:', err));
 
-// Định nghĩa Schema món ăn
+// Äá»‹nh nghÄ©a Schema mÃ³n Äƒn
 const foodSchema = new mongoose.Schema({
   foodId: { type: String, required: true, unique: true },
   name: { type: String, required: true },
@@ -27,12 +28,12 @@ const foodSchema = new mongoose.Schema({
 
 const Food = mongoose.model('Food', foodSchema, 'foods');
 
-// 1. Endpoint kiểm tra sức khỏe
+// 1. Endpoint kiá»ƒm tra sá»©c khá»e
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'OK', message: 'Backend dang hoat dong tot!' });
 });
 
-// 2. Lấy danh sách món ăn / Tìm kiếm
+// 2. Láº¥y danh sÃ¡ch mÃ³n Äƒn / TÃ¬m kiáº¿m
 app.get('/api/foods', async (req, res) => {
   try {
     const { search } = req.query;
@@ -53,7 +54,7 @@ app.get('/api/foods', async (req, res) => {
   }
 });
 
-// 3. Xem chi tiết 1 món ăn
+// 3. Xem chi tiáº¿t 1 mÃ³n Äƒn
 app.get('/api/foods/:id', async (req, res) => {
   try {
     const food = await Food.findById(req.params.id);
@@ -64,7 +65,7 @@ app.get('/api/foods/:id', async (req, res) => {
   }
 });
 
-// 4. Thêm món ăn mới
+// 4. ThÃªm mÃ³n Äƒn má»›i
 app.post('/api/foods', async (req, res) => {
   try {
     const { foodId, name, category, cuisine, price, quantity } = req.body;
@@ -85,7 +86,7 @@ app.post('/api/foods', async (req, res) => {
   }
 });
 
-// 5. Cập nhật món ăn
+// 5. Cáº­p nháº­t mÃ³n Äƒn
 app.put('/api/foods/:id', async (req, res) => {
   try {
     const updatedFood = await Food.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -96,7 +97,7 @@ app.put('/api/foods/:id', async (req, res) => {
   }
 });
 
-// 6. Xóa món ăn
+// 6. XÃ³a mÃ³n Äƒn
 app.delete('/api/foods/:id', async (req, res) => {
   try {
     const deletedFood = await Food.findByIdAndDelete(req.params.id);
