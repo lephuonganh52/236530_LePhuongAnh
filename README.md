@@ -12,4 +12,4 @@
 3. Link_Docker_Frontend: https://hub.docker.com/r/lephuonganh2005/236530-frontend
 4. Link_Render_App: https://two36530-frontend-app.onrender.com
 5. Link_Render_API: https://two36530-backend-api.onrender.com
-6. Link_Data_MongoDB: MongoDB Atlas Cluster: `236530_LePhuongAnh` (Collection: `foods`)
+6. Link_Data_MongoDB: mongodb+srv://lephuonganh101120_db_user:Anh236530@cluster0.7xevsl4.mongodb.net/236530_LePhuongAnh?retryWrites=true&w=majority
